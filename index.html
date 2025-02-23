@@ -1,0 +1,287 @@
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>RecipeShare</title>
+        <link rel="stylesheet" href="styles.css">
+        <style>
+            * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Arial, sans-serif;
+    }
+
+    body {
+        background-color: #f4f4f9;
+        color: #333;
+        line-height: 1.6;
+    }
+
+
+    header {
+        background: #333;
+        color: white;
+        padding: 10px 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    header .logo h1 {
+        margin-left: 20px;
+    }
+
+    nav ul {
+        list-style-type: none;
+        display: flex;
+        margin-right: 20px;
+    }
+
+    nav ul li {
+        margin: 0 15px;
+    }
+
+    nav ul li a {
+        color: white;
+        text-decoration: none;
+        font-weight: bold;
+    }
+
+
+    .hero {
+        background: #8e44ad;
+        color: white;
+        padding: 80px 20px;
+        text-align: center;
+    }
+
+    .hero h2 {
+        font-size: 3rem;
+    }
+
+
+    .recipe-list {
+        padding: 20px;
+        text-align: center;
+    }
+
+    .recipe-card {
+        display: inline-block;
+        width: 300px;
+        margin: 20px;
+        background-color: white;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s;
+    }
+
+    .recipe-card:hover {
+        transform: scale(1.05);
+    }
+
+    .recipe-card img {
+        width: 100%;
+        border-radius: 8px;
+    }
+
+    .recipe-card h3 {
+        font-size: 1.5rem;
+        margin: 10px 0;
+    }
+
+    .recipe-card a {
+        color: #8e44ad;
+        text-decoration: none;
+        font-weight: bold;
+    }
+
+
+    #submit-recipe {
+        padding: 40px 20px;
+        background-color: #ecf0f1;
+        text-align: center;
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        max-width: 600px;
+        margin: 0 auto;
+    }
+
+    form label {
+        margin: 10px 0 5px;
+    }
+
+    form input,
+    form textarea {
+        padding: 10px;
+        margin-bottom: 20px;
+        width: 100%;
+        max-width: 500px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+
+    form button {
+        padding: 10px 20px;
+        background-color: #8e44ad;
+        color: white;
+        border: none;
+        cursor: pointer;
+        border-radius: 4px;
+    }
+
+    form button:hover {
+        background-color: #9b59b6;
+    }
+
+    #message {
+        margin-top: 20px;
+        font-weight: bold;
+    }
+
+
+    #contact {
+        padding: 40px 20px;
+        background-color: #ecf0f1;
+        text-align: center;
+    }
+
+    footer {
+        background-color: #333;
+        color: white;
+        text-align: center;
+        padding: 10px 0;
+        position: relative;
+        bottom: 0;
+        width: 100%;
+    }
+        </style>
+        <script>
+            document.getElementById('recipeForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+        
+        const recipeName = document.getElementById('recipe-name').value;
+        const ingredients = document.getElementById('ingredients').value;
+        const instructions = document.getElementById('instructions').value;
+        const recipeImage = document.getElementById('recipe-image').value;
+
+        if (recipeName && ingredients && instructions && recipeImage) {
+            const messageDiv = document.getElementById('message');
+            messageDiv.textContent = `Recipe "${recipeName}" has been submitted successfully!`;
+            messageDiv.style.color = 'green';
+
+        
+            document.getElementById('recipeForm').reset();
+        } else {
+            const messageDiv = document.getElementById('message');
+            messageDiv.textContent = 'Please fill in all fields.';
+            messageDiv.style.color = 'red';
+        }
+    });
+
+
+    document.getElementById('contactForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+        
+        const email = document.getElementById('email').value;
+        const message = document.getElementById('message').value;
+
+        if (email && message) {
+            alert(`Thank you for contacting us, ${email}! We'll get back to you shortly.`);
+            document.getElementById('contactForm').reset();
+        } else {
+            alert('Please fill in both fields.');
+        }
+    });
+        </script>
+    </head>
+    <body>
+
+        <header>
+            <div class="logo">
+                <h1>RecipeShare</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#recipes">Recipes</a></li>
+                    <li><a href="#submit-recipe">Submit Recipe</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </header>
+
+    
+        <section id="home" class="hero">
+            <h2>Welcome to RecipeShare</h2>
+            <p>Explore, share, and enjoy delicious recipes from around the world!</p>
+        </section>
+
+        
+        <section id="recipes" class="recipe-list">
+            <h2>Popular Recipes</h2>
+            <div class="recipe-card">
+                <img src="recipe1.jpg" alt="Recipe 1">
+                <h3>Spaghetti Carbonara</h3>
+                <p>Delicious and creamy pasta with bacon and eggs.</p>
+                <a href="#">View Recipe</a>
+            </div>
+            <div class="recipe-card">
+                <img src="recipe2.jpg" alt="Recipe 2">
+                <h3>Chocolate Cake</h3>
+                <p>A rich and moist chocolate cake topped with frosting.</p>
+                <a href="#">View Recipe</a>
+            </div>
+            
+        </section>
+
+    
+        <section id="submit-recipe">
+            <h2>Submit Your Recipe</h2>
+            <form id="recipeForm">
+                <label for="recipe-name">Recipe Name:</label>
+                <input type="text" id="recipe-name" required>
+
+                <label for="ingredients">Ingredients:</label>
+                <textarea id="ingredients" rows="4" required></textarea>
+
+                <label for="instructions">Instructions:</label>
+                <textarea id="instructions" rows="6" required></textarea>
+
+                <label for="recipe-image">Recipe Image URL:</label>
+                <input type="text" id="recipe-image" required>
+
+                <button type="submit">Submit Recipe</button>
+            </form>
+            <div id="message"></div>
+        </section>
+
+    
+        <section id="contact">
+            <h2>Contact Us</h2>
+            <p>Have questions? Feel free to reach out!</p>
+            <form id="contactForm">
+                <label for="email">Your Email:</label>
+                <input type="email" id="email" required>
+
+                <label for="message">Your Message:</label>
+                <textarea id="message" rows="4" required></textarea>
+
+                <button type="submit">Send Message</button>
+            </form>
+        </section>
+
+        
+        <footer>
+            <p>&copy; 2025 RecipeShare. All rights reserved.</p>
+        </footer>
+
+        <script src="script.js"></script>
+    </body>
+    </html>
